@@ -379,4 +379,5 @@ const procesarCotizacion = async () => {
   .input-row { flex-direction: column; }
   .navigation-buttons { flex-direction: column-reverse; }
 }
+  
 </style>
