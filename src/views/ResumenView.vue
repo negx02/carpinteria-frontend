@@ -43,7 +43,7 @@ const procesarCotizacion = async () => {
 
     const pdfBase64 = await html2pdf().set(opcionesPdf).from(elemento).outputPdf('datauristring')
 
-    const respuesta = await fetch('http://localhost:3000/api/cotizaciones/enviar', {
+    const respuesta = await fetch('https://carpinteria-backend-production.up.railway.app/api/cotizaciones/enviar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
