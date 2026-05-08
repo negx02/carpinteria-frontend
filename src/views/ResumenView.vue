@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue' // Añadido onMounted
 import { useRouter } from 'vue-router'
 import { useCotizadorStore } from '../stores/cotizadorStore'
 import html2pdf from 'html2pdf.js'
@@ -12,6 +12,13 @@ const enviando = ref(false)
 
 const nombreCliente = ref('')
 const correoCliente = ref('')
+
+// SEGURIDAD: Si no hay datos (por un refresh), volvemos al inicio para evitar errores de "payload"
+onMounted(() => {
+  if (!store.mueble) {
+    router.push('/')
+  }
+})
 
 const irInicio = () => {
   store.mueble = ''
@@ -87,7 +94,7 @@ const procesarCotizacion = async () => {
         <div class="section-item">
           <label>DIMENSIONES Y VOLUMEN</label>
           <p>{{ store.medidas.ancho }} x {{ store.medidas.alto }} x {{ store.medidas.profundidad }} CM</p>
-          <span class="metadata">Área est.: {{ store.calculoDetallado.areaM2 }} m² | Planchas est.: {{ store.calculoDetallado.planchasNecesarias }}</span>
+          <span class="metadata">Área est.: {{ store.calculoDetallado?.areaM2 || 0 }} m² | Planchas est.: {{ store.calculoDetallado?.planchasNecesarias || 0 }}</span>
         </div>
       </div>
 
@@ -116,7 +123,7 @@ const procesarCotizacion = async () => {
           <span>*Sujeto a cambios tras validación técnica in situ. Incluye manufactura.</span>
         </div>
         <div class="total-amount">
-          ${{ store.calculoDetallado.totalFinal.toLocaleString('es-MX', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
+          ${{ store.calculoDetallado?.totalFinal.toLocaleString('es-MX', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
         </div>
       </div>
     </div>
@@ -379,5 +386,4 @@ const procesarCotizacion = async () => {
   .input-row { flex-direction: column; }
   .navigation-buttons { flex-direction: column-reverse; }
 }
-  
 </style>
