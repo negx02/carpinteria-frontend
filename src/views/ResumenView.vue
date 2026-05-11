@@ -93,7 +93,7 @@ const procesarCotizacion = async () => {
           <div class="total-bar">
             <div class="total-desc">
               <h3>INVERSIÓN ESTIMADA</h3>
-              <span>*Sujeto a validación técnica in situ. Manufactura incluida.</span>
+              <span>*PRECIO APROXIMADO, ESTE PODRIA VARIAR.</span>
             </div>
             <div class="total-price">
               ${{ store.calculoDetallado.totalFinal.toLocaleString('es-MX', {minimumFractionDigits: 2}) }}
