@@ -8,12 +8,34 @@ import TheFooter from './components/Footer.vue'
   <NavBar />
   
   <div class="content-wrapper">
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </RouterView>
   </div>
 
-  <TheFooter /> </template>
+  <TheFooter /> 
+</template>
 
 <style>
-body { margin: 0; font-family: sans-serif; background: #fffaf0; }
-.content-wrapper { min-height: 80vh; }
+body { 
+  margin: 0; 
+  font-family: sans-serif; 
+  background: #fffaf0; 
+}
+
+.content-wrapper { 
+  min-height: 80vh; 
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
