@@ -63,7 +63,7 @@ const procesarCotizacion = async () => {
         <div class="doc-header">
           <h2>JUAREZ<span>DESIGN</span></h2>
           <div class="doc-meta">
-            <span>COTIZACIÓN PRELIMINAR</span>
+            <span>COTIZACIÓN PARA </span>
             <span>PROYECTO: {{ store.mueble?.toUpperCase().replace('_', ' ') }}</span>
           </div>
         </div>
