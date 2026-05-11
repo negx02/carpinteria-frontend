@@ -29,23 +29,20 @@ export const useCotizadorStore = defineStore('cotizador', () => {
   ]
 
   const catalogoAccesorios = [
-    { id: 'cierre_suave_cajones', nombre: 'Correderas de Cierre Suave', precio: 1200 },
-    { id: 'bisagras_premium', nombre: 'Bisagras de Amortiguación', precio: 800 },
-    { id: 'iluminacion_led', nombre: 'Iluminación LED Integrada', precio: 2500 },
-    { id: 'jaladera_oculta', nombre: 'Perfil Gola (Jaladera Oculta)', precio: 1500 },
-    { id: 'organizador_madera', nombre: 'Organizadores Internos', precio: 1800 },
-    { id: 'chapa_invisible', nombre: 'Cerradura Invisible RFID', precio: 2200 }
+    { id: 'cierre_suave_cajones', nombre: 'Correderas de Cierre Suave', precio: 1200, para: ['cocina', 'closet', 'tocador', 'alacena', 'escritorio', 'centro_tv'] },
+    { id: 'bisagras_premium', nombre: 'Bisagras de Amortiguación', precio: 800, para: ['cocina', 'closet', 'alacena', 'puertas'] },
+    { id: 'iluminacion_led', nombre: 'Iluminación LED Integrada', precio: 2500, para: ['cocina', 'closet', 'tocador', 'centro_tv'] },
+    { id: 'jaladera_oculta', nombre: 'Perfil Gola (Jaladera Oculta)', precio: 1500, para: ['cocina', 'closet', 'centro_tv'] },
+    { id: 'organizador_madera', nombre: 'Organizadores Internos', precio: 1800, para: ['closet', 'tocador', 'alacena'] },
+    { id: 'chapa_invisible', nombre: 'Cerradura Invisible RFID', precio: 2200, para: ['closet', 'puertas'] }
   ]
 
   const calculoDetallado = computed(() => {
     let total = 0
-    
     const anchoM = medidas.value.ancho / 100
     const altoM = medidas.value.alto / 100
     const profM = medidas.value.profundidad / 100
-    
     const areaM2 = (2 * (anchoM * altoM)) + (2 * (anchoM * profM)) + (2 * (altoM * profM))
-
     const m2ConDesperdicio = areaM2 * 1.20
     const planchasNecesarias = Math.ceil(m2ConDesperdicio / 2.97)
 
@@ -58,7 +55,7 @@ export const useCotizadorStore = defineStore('cotizador', () => {
 
     const acabadoElegido = catalogoAcabados.find(a => a.id === acabado.value)
     let costoAcabado = 0
-    if (acabadoElegido && areaM2 > 0) {
+    if (acabadoElegido && areaM2 > 0 && material.value !== 'melamina') {
       costoAcabado = areaM2 * acabadoElegido.precioM2
       total += costoAcabado
     }
@@ -69,7 +66,6 @@ export const useCotizadorStore = defineStore('cotizador', () => {
       if (acc) costoAccesorios += acc.precio
     })
     total += costoAccesorios
-
     const manoDeObra = total * 0.60
     total += manoDeObra
 
@@ -90,6 +86,7 @@ export const useCotizadorStore = defineStore('cotizador', () => {
   })
 
   const obtenerNombreAcabado = computed(() => {
+    if (material.value === 'melamina') return 'Acabado de Fábrica'
     const ac = catalogoAcabados.find(a => a.id === acabado.value)
     return ac ? ac.nombre : 'No seleccionado'
   })
@@ -101,8 +98,16 @@ export const useCotizadorStore = defineStore('cotizador', () => {
     })
   })
 
+  const resetStore = () => {
+    mueble.value = ''
+    medidas.value = { ancho: 0, alto: 0, profundidad: 0 }
+    material.value = null
+    acabado.value = null
+    accesorios.value = []
+  }
+
   return {
-    mueble, medidas, material, acabado, accesorios, 
-    calculoDetallado, obtenerNombreMaterial, obtenerNombreAcabado, obtenerNombresAccesorios
+    mueble, medidas, material, acabado, accesorios, catalogoAccesorios,
+    calculoDetallado, obtenerNombreMaterial, obtenerNombreAcabado, obtenerNombresAccesorios, resetStore
   }
 })
