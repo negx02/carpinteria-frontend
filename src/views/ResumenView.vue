@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue' // Añadido onMounted
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useCotizadorStore } from '../stores/cotizadorStore'
 import html2pdf from 'html2pdf.js'
@@ -13,7 +13,6 @@ const enviando = ref(false)
 const nombreCliente = ref('')
 const correoCliente = ref('')
 
-// SEGURIDAD: Si no hay datos (por un refresh), volvemos al inicio para evitar errores de "payload"
 onMounted(() => {
   if (!store.mueble) {
     router.push('/')
