@@ -31,21 +31,23 @@ const seleccionar = (item) => {
       <p>Determina el tipo de proyecto. Cada diseño se ajusta paramétricamente a tus necesidades.</p>
     </div>
 
-    <div class="grid-layout">
+    <div class="grid-display">
       <div 
         v-for="(item, index) in tiposMuebles" 
         :key="item.id" 
-        class="card-action" 
+        class="selection-card" 
         :class="{ 'active': store.mueble === item.id }"
         @click="seleccionar(item)"
       >
-        <div class="card-head">
-          <span class="index">0{{ index + 1 }}</span>
+        <div class="card-ui">
+          <span class="tag">0{{ index + 1 }}</span>
           <div class="check-box">
-            <svg v-if="store.mueble === item.id" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg v-if="store.mueble === item.id" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-info">
           <h3>{{ item.nombre }}</h3>
           <p>{{ item.desc }}</p>
         </div>
@@ -57,15 +59,15 @@ const seleccionar = (item) => {
 <style scoped>
 .step-container { min-height: 100vh; padding: 60px 20px; display: flex; flex-direction: column; align-items: center; background: #fff; }
 .step-header { text-align: center; margin-bottom: 50px; }
-.step-indicator { font-size: 0.75rem; font-weight: 800; color: #0ea5e9; border: 1.5px solid #0ea5e9; padding: 6px 12px; }
-.grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; width: 100%; max-width: 1200px; }
-.card-action { border: 1.5px solid #1a1a1a; padding: 30px; cursor: pointer; transition: 0.4s; background: #fff; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; }
-.card-action:hover { transform: translateY(-8px); border-color: #0ea5e9; box-shadow: 0 15px 35px rgba(14, 165, 233, 0.15); }
-.card-action.active { border-color: #0ea5e9; background: #fcfdfe; box-shadow: 0 0 0 1px #0ea5e9; }
-.card-head { display: flex; justify-content: space-between; }
-.index { font-size: 0.8rem; font-weight: 800; color: #cbd5e1; }
-.check-box { width: 22px; height: 22px; border: 1.5px solid #1a1a1a; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.step-indicator { color: #0ea5e9; border: 1px solid #0ea5e9; padding: 6px 12px; font-weight: 800; letter-spacing: 2px; }
+.grid-display { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; width: 100%; max-width: 1200px; }
+.selection-card { border: 1.5px solid #1a1a1a; padding: 30px; cursor: pointer; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); background: #fff; border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; }
+.selection-card:hover { transform: translateY(-8px); border-color: #0ea5e9; box-shadow: 0 15px 35px rgba(14, 165, 233, 0.15); }
+.selection-card.active { border-color: #0ea5e9; background: #fcfdfe; box-shadow: 0 0 0 1px #0ea5e9; }
+.card-ui { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.tag { font-size: 0.8rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; }
+.check-box { width: 22px; height: 22px; border: 1.5px solid #1a1a1a; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
 .active .check-box { background: #0ea5e9; border-color: #0ea5e9; color: #fff; }
-.card-body h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
-.card-body p { color: #64748b; font-size: 0.9rem; line-height: 1.6; }
+.card-info h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+.card-info p { color: #64748b; font-size: 0.9rem; line-height: 1.6; font-weight: 400; }
 </style>

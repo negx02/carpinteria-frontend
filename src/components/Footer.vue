@@ -9,13 +9,19 @@
         <h4>Navegación</h4>
         <ul>
           <li><router-link to="/">Inicio</router-link></li>
-          <li><router-link to="/cotizador/mueble">Cotizador</router-link></li>
+          <li><router-link to="/presupuestos">Cotizador</router-link></li>
         </ul>
       </div>
       <div class="footer-section">
         <h4>Contacto</h4>
-        <p>📍 Guaymas, Sonora, México</p>
-        <p>📞 622-123-4567</p>
+        <div class="contact-item">
+          <img src="/imagens/pin.png" alt="Ubicación" class="footer-icon">
+          <p>Guaymas, Sonora, México</p>
+        </div>
+        <div class="contact-item">
+          <img src="/imagens/telefono.png" alt="Teléfono" class="footer-icon">
+          <p>622 169 41 55</p>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -65,9 +71,15 @@
   color: #475569;
   line-height: 1.6;
   font-size: 0.95rem;
+  margin: 0;
 }
-.footer-section ul { list-style: none; padding: 0; }
-.footer-section ul li { margin-bottom: 12px; }
+.footer-section ul { 
+  list-style: none; 
+  padding: 0; 
+}
+.footer-section ul li { 
+  margin-bottom: 12px; 
+}
 .footer-section a { 
   color: #1a1a1a; 
   text-decoration: none;
@@ -76,6 +88,17 @@
 }
 .footer-section a:hover {
   color: #0ea5e9;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+.footer-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 .footer-bottom {
   text-align: center;

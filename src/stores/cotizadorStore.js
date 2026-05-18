@@ -9,36 +9,35 @@ export const useCotizadorStore = defineStore('cotizador', () => {
   const accesorios = ref([])
 
   const catalogoMateriales = [
-    { id: 'melamina', nombre: 'Melamina Estándar', desc: 'Superficie resistente a rayaduras. Ideal para interiores de closets y gabinetes.', precioPlancha: 1200, cat: 'Estándar' },
-    { id: 'mdf_natural', nombre: 'MDF Natural', desc: 'Tablero liso de densidad media. Perfecto para procesos de lacado y pintura.', precioPlancha: 950, cat: 'Estándar' },
-    { id: 'mdf_hidrofugo', nombre: 'MDF Hidrófugo', desc: 'Tratamiento especial resistente a la humedad. Recomendado para cocinas y baños.', precioPlancha: 1400, cat: 'Premium' },
-    { id: 'triplay_pino', nombre: 'Triplay de Pino', desc: 'Alta resistencia estructural. Ideal para bases sólidas y estructuras internas.', precioPlancha: 1100, cat: 'Estándar' },
-    { id: 'triplay_encino', nombre: 'Triplay de Encino', desc: 'Elegancia superior con chapa natural. Máxima durabilidad con acabado premium.', precioPlancha: 2600, cat: 'Premium' },
-    { id: 'madera_pino', nombre: 'Madera Sólida (Pino)', desc: 'Opción clásica y versátil con vetas naturales para estilos rústicos o nórdicos.', precioPlancha: 1800, cat: 'Sólido' },
-    { id: 'madera_parota', nombre: 'Madera Sólida (Parota)', desc: 'Veta exótica y llamativa. Alta densidad y resistencia para cubiertas.', precioPlancha: 4500, cat: 'Exótico' },
-    { id: 'madera_cedro', nombre: 'Madera Sólida (Cedro)', desc: 'Aroma característico, repelente de plagas y resistente a la humedad.', precioPlancha: 3800, cat: 'Premium' }
+    { id: 'melamina', nombre: 'Melamina Estándar', desc: 'Superficie resistente a rayaduras. Ideal para interiores de closets y gabinetes.', precioPlancha: 1650, cat: 'Estándar' },
+    { id: 'mdf_natural', nombre: 'MDF Natural', desc: 'Tablero liso de densidad media. Perfecto para procesos de lacado y pintura.', precioPlancha: 1350, cat: 'Estándar' },
+    { id: 'mdf_hidrofugo', nombre: 'MDF Hidrófugo', desc: 'Tratamiento especial resistente a la humedad. Recomendado para cocinas y baños.', precioPlancha: 1980, cat: 'Premium' },
+    { id: 'triplay_pino', nombre: 'Triplay de Pino', desc: 'Alta resistencia estructural. Ideal para bases sólidas y estructuras internas.', precioPlancha: 1550, cat: 'Estándar' },
+    { id: 'triplay_encino', nombre: 'Triplay de Encino', desc: 'Elegancia superior con chapa natural. Máxima durabilidad con acabado premium.', precioPlancha: 3400, cat: 'Premium' },
+    { id: 'madera_pino', nombre: 'Madera Sólida (Pino)', desc: 'Opción clásica y versátil con vetas naturales para estilos rústicos o nórdicos.', precioPlancha: 2400, cat: 'Sólido' },
+    { id: 'madera_parota', nombre: 'Madera Sólida (Parota)', desc: 'Veta exótica y llamativa. Alta densidad y resistencia para cubiertas.', precioPlancha: 5800, cat: 'Exótico' },
+    { id: 'madera_cedro', nombre: 'Madera Sólida (Cedro)', desc: 'Aroma característico, repelente de plagas y resistente a la humedad.', precioPlancha: 4900, cat: 'Premium' }
   ]
 
   const catalogoAcabados = [
-    { id: 'barniz_natural', nombre: 'Barniz Natural', desc: 'Protección transparente que resalta la veta original.', precioM2: 350, tipo: 'Clásico' },
-    { id: 'laca_brillante', nombre: 'Laca Brillante', desc: 'Acabado de alto brillo tipo espejo con gran resistencia.', precioM2: 600, tipo: 'Moderno' },
-    { id: 'mate_profundo', nombre: 'Mate Profundo', desc: 'Superficie sin reflejos, suave al tacto y elegante.', precioM2: 500, tipo: 'Minimalista' },
-    { id: 'semicerrado', nombre: 'Poro Semicerrado', desc: 'Mantiene la textura natural con protección superior.', precioM2: 450, tipo: 'Técnico' },
-    { id: 'color_solido', nombre: 'Color Sólido', desc: 'Acabado uniforme que oculta la veta por completo.', precioM2: 550, tipo: 'Versátil' },
-    { id: 'aceite_organico', nombre: 'Aceite Orgánico', desc: 'Nutre la madera desde el interior. Tacto 100% natural.', precioM2: 400, tipo: 'Ecológico' }
+    { id: 'barniz_natural', nombre: 'Barniz Natural', desc: 'Protección transparente que resalta la veta original.', precioM2: 480, tipo: 'Clásico' },
+    { id: 'laca_brillante', nombre: 'Laca Brillante', desc: 'Acabado de alto brillo tipo espejo con gran resistencia.', precioM2: 780, tipo: 'Moderno' },
+    { id: 'mate_profundo', nombre: 'Mate Profundo', desc: 'Superficie sin reflejos, suave al tacto y elegante.', precioM2: 650, tipo: 'Minimalista' },
+    { id: 'semicerrado', nombre: 'Poro Semicerrado', desc: 'Mantiene la textura natural con protección superior.', precioM2: 580, tipo: 'Técnico' },
+    { id: 'color_solido', nombre: 'Color Sólido', desc: 'Acabado uniforme que oculta la veta por completo.', precioM2: 720, tipo: 'Versátil' },
+    { id: 'aceite_organico', nombre: 'Aceite Orgánico', desc: 'Nutre la madera desde el interior. Tacto 100% natural.', precioM2: 520, tipo: 'Ecológico' }
   ]
 
   const catalogoAccesorios = [
-    { id: 'cierre_suave_cajones', nombre: 'Correderas Cierre Suave', desc: 'Mecanismo que amortigua y evita golpes.', precio: 1200, para: ['cocina', 'closet', 'tocador', 'alacena', 'escritorio', 'centro_tv'] },
-    { id: 'bisagras_premium', nombre: 'Bisagras Amortiguadas', desc: 'Cierre silencioso para puertas de gabinete.', precio: 800, para: ['cocina', 'closet', 'alacena', 'puertas'] },
-    { id: 'iluminacion_led', nombre: 'Iluminación LED', desc: 'Tiras LED con sensor de movimiento integrado.', precio: 2500, para: ['cocina', 'closet', 'tocador', 'centro_tv'] },
-    { id: 'jaladera_oculta', nombre: 'Perfil Gola', desc: 'Sistema de apertura sin tiradores externos.', precio: 1500, para: ['cocina', 'closet', 'centro_tv'] },
-    { id: 'organizador_madera', nombre: 'Organizadores', desc: 'Divisiones internas para cubiertos o ropa.', precio: 1800, para: ['closet', 'tocador', 'alacena'] },
-    { id: 'chapa_invisible', nombre: 'Cerradura RFID', desc: 'Apertura electrónica mediante tarjeta.', precio: 2200, para: ['closet', 'puertas'] }
+    { id: 'cierre_suave_cajones', nombre: 'Correderas Cierre Suave', desc: 'Mecanismo que amortigua y evita golpes.', precio: 1600, para: ['cocina', 'closet', 'tocador', 'alacena', 'escritorio', 'centro_tv'] },
+    { id: 'bisagras_premium', nombre: 'Bisagras Amortiguadas', desc: 'Cierre silencioso para puertas de gabinete.', precio: 1100, para: ['cocina', 'closet', 'alacena', 'puertas'] },
+    { id: 'iluminacion_led', nombre: 'Iluminación LED', desc: 'Tiras LED con sensor de movimiento integrado.', precio: 3200, para: ['cocina', 'closet', 'tocador', 'centro_tv'] },
+    { id: 'jaladera_oculta', nombre: 'Perfil Gola', desc: 'Sistema de apertura sin tiradores externos.', precio: 1950, para: ['cocina', 'closet', 'centro_tv'] },
+    { id: 'organizador_madera', nombre: 'Organizadores', desc: 'Divisiones internas para cubiertos o ropa.', precio: 2400, para: ['closet', 'tocador', 'alacena'] },
+    { id: 'chapa_invisible', nombre: 'Cerradura RFID', desc: 'Apertura electrónica mediante tarjeta.', precio: 2900, para: ['closet', 'puertas'] }
   ]
 
   const calculoDetallado = computed(() => {
-    let total = 0
     const anchoM = medidas.value.ancho / 100
     const altoM = medidas.value.alto / 100
     const profM = medidas.value.profundidad / 100
@@ -50,14 +49,12 @@ export const useCotizadorStore = defineStore('cotizador', () => {
     let costoMaterial = 0
     if (materialElegido && planchasNecesarias > 0) {
       costoMaterial = planchasNecesarias * materialElegido.precioPlancha
-      total += costoMaterial
     }
 
     const acabadoElegido = catalogoAcabados.find(a => a.id === acabado.value)
     let costoAcabado = 0
     if (acabadoElegido && areaM2 > 0 && material.value !== 'melamina') {
       costoAcabado = areaM2 * acabadoElegido.precioM2
-      total += costoAcabado
     }
 
     let costoAccesorios = 0
@@ -65,9 +62,12 @@ export const useCotizadorStore = defineStore('cotizador', () => {
       const acc = catalogoAccesorios.find(a => a.id === accId)
       if (acc) costoAccesorios += acc.precio
     })
-    total += costoAccesorios
-    const manoDeObra = total * 0.60
-    total += manoDeObra
+
+    const subtotalInsumos = costoMaterial + costoAcabado + costoAccesorios
+    const manoDeObra = subtotalInsumos * 0.35
+    const subtotalNeto = subtotalInsumos + manoDeObra
+    const iva = subtotalNeto * 0.16
+    const totalFinal = subtotalNeto + iva
 
     return {
       areaM2: areaM2.toFixed(2),
@@ -76,7 +76,9 @@ export const useCotizadorStore = defineStore('cotizador', () => {
       costoAcabado,
       costoAccesorios,
       manoDeObra,
-      totalFinal: total
+      subtotalNeto,
+      iva,
+      totalFinal
     }
   })
 
